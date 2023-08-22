@@ -238,7 +238,9 @@ module Chewy
           collection = if args.empty? && @target.respond_to?(import_all_method)
             @target.send(import_all_method)
           else
-            args.flatten(1).compact
+            # args.flatten(1).compact
+            # making a fix to return the first arg as the collection, instead of the args array
+            args.flatten(1).compact.first
           end
 
           [collection, options]
